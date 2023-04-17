@@ -1,8 +1,8 @@
-import { createStore } from 'redux';
 import { reducer } from './reducer';
-import { initialState } from './initialState';
+// import { initialState } from './initialState';
+import { configureStore } from '@reduxjs/toolkit';
 
-export const store = createStore(reducer, initialState);
+export const store = configureStore({ reducer });
 
 // const reducer = (state, action) => {
 //   switch (action.type) {

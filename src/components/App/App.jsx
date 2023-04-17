@@ -4,8 +4,8 @@ import Contacts from 'components/Contacts/Contacts';
 import Filter from 'components/Filter/Filter';
 import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewContact, deleteContactById } from 'store/contacts/actions';
-import { updateFilterValue } from 'store/filter/actions';
+import { addNewContact, deleteContactById } from 'store/contacts/contactsSlice';
+import { updateFilterValue } from 'store/filter/filterSlice';
 
 export default function App() {
   const { contacts } = useSelector((state) => state.contacts);
