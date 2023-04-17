@@ -30,11 +30,6 @@ export default function App() {
   const updateFilter = (inputValue) => {
     dispatch(updateFilterValue(inputValue))
   }
-
-  // useEffect(() => {
-  //   const savedContacts = JSON.parse(localStorage.getItem('contacts'));
-  //   if (savedContacts) (savedContacts);
-  // }, [])
   
   return <div className={css.container}>
       <h1>Phonebook</h1>
