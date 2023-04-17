@@ -1,21 +1,24 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import Form from 'components/Form/Form';
 import Contacts from 'components/Contacts/Contacts';
 import Filter from 'components/Filter/Filter';
 import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { addNewContact, deleteContactById } from 'store/contacts/actions';
+import { updateFilterValue } from 'store/filter/actions';
 
 export default function App() {
-  const {contacts, filter} = useSelector((state) => state);
+  const { contacts } = useSelector((state) => state.contacts);
+  const {filter} = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();  
 
   const addContact = (newContact) => {
-    dispatch({type: 'addContact', payload: newContact})
+    dispatch(addNewContact(newContact))
   }
   
   const deleteContact = (id) => {
-    dispatch({type: 'deleteContact', payload: id})
+    dispatch(deleteContactById(id))
   }
 
   const filterContacts = () => {   
@@ -25,8 +28,13 @@ export default function App() {
   }
   
   const updateFilter = (inputValue) => {
-    dispatch({type: 'updateFilter', payload: inputValue })
+    dispatch(updateFilterValue(inputValue))
   }
+
+  // useEffect(() => {
+  //   const savedContacts = JSON.parse(localStorage.getItem('contacts'));
+  //   if (savedContacts) (savedContacts);
+  // }, [])
   
   return <div className={css.container}>
       <h1>Phonebook</h1>

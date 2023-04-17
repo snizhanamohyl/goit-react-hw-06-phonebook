@@ -1,35 +1,32 @@
 import { createStore } from 'redux';
+import { reducer } from './reducer';
+import { initialState } from './initialState';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'addContact':
-      return {
-        ...state,
-        contacts: [...state.contacts, action.payload],
-      };
-    case 'deleteContact':
-      return {
-        ...state,
-        contacts: [
-          ...state.contacts.filter(contact => contact.id !== action.payload),
-        ],
-      };
-    case 'updateFilter':
-      return {
-        ...state,
-        filter: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+export const store = createStore(reducer, initialState);
 
-export const store = createStore(reducer, {
-  contacts: [],
-  filter: '',
-});
-
-console.log(store.getState());
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case 'addContact':
+//       return {
+//         ...state,
+//         contacts: [...state.contacts, action.payload],
+//       };
+//     case 'deleteContact':
+//       return {
+//         ...state,
+//         contacts: [
+//           ...state.contacts.filter(contact => contact.id !== action.payload),
+//         ],
+//       };
+//     case 'updateFilter':
+//       return {
+//         ...state,
+//         filter: action.payload,
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
 // store.dispatch({
 //   type: 'addContact',
